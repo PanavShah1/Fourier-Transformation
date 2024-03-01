@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from pydantic import BaseModel
 
+from translate import translate
 app = FastAPI()
 
 app.add_middleware(
@@ -51,11 +52,7 @@ def calculate(t, l, coeff, sin_coeff, cos_coeff):
 def return_graph(operation):
     # if operation == 'y=x*x':
     #     operation = 'x*x'
-    if "y=" in operation:
-        operation_list = operation.split('=')
-        operation = operation_list[1]  
-    else:
-        operation = operation.replace('y=', '')
+    operation = translate(operation)
 
     def fn(x):
         return (eval(operation))
@@ -140,5 +137,9 @@ def return_graph(operation):
 @app.post('/operate/')
 def func(operation : dict):
     return {"graph" : return_graph(operation['graph'])[0], "operation": return_graph(operation['graph'])[1]}
+    # return {"graph" : 'x', "operation": return_graph(operation['graph'])[1]}
+
+
+
 
 
