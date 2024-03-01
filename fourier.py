@@ -48,9 +48,17 @@ def calculate(t, l, coeff, sin_coeff, cos_coeff):
 
 
 
-def return_graph():
+def return_graph(operation):
+    # if operation == 'y=x*x':
+    #     operation = 'x*x'
+    if "y=" in operation:
+        operation_list = operation.split('=')
+        operation = operation_list[1]  
+    else:
+        operation = operation.replace('y=', '')
+
     def fn(x):
-        return (json.loads(json.dumps(np.cos(x))))
+        return (eval(operation))
     
     step_size = (range_max-range_min)/no_data_points
     range_ = np.arange(range_min, range_max, step_size)
@@ -122,7 +130,7 @@ def return_graph():
 
     
     
-    return graph
+    return [graph, operation]
 
 
 
@@ -131,6 +139,6 @@ def return_graph():
 
 @app.post('/operate/')
 def func(operation : dict):
-    return {"graph" : return_graph()}
+    return {"graph" : return_graph(operation['graph'])[0], "operation": return_graph(operation['graph'])[1]}
 
 
