@@ -30,18 +30,23 @@ elt.addEventListener("click", userChange)
 // range_min = 1
 // range_max = 5
 // no_data_points = 10
-var range_min, range_max, no_data_points
+document.getElementById("range-min").value = 1
+document.getElementById("range-max").value = 10
+document.getElementById("no-data-points").value = 10
+var range_min_ = 1
+var range_max_ = 10
+no_data_points_ = 10
 function input_data(){
-    range_min = document.getElementById("range-min").value
-    range_max = document.getElementById("range-max").value
-    no_data_points = document.getElementById("no-data-points").value
-    console.log(range_min, range_max, no_data_points)
+    range_min_ = document.getElementById("range-min").value
+    range_max_ = document.getElementById("range-max").value
+    no_data_points_ = document.getElementById("no-data-points").value
+    console.log(range_min_, range_max_, no_data_points_)
 }
 document.addEventListener("input", input_data)
 
 async function api_call(function_) {
     const apiUrl = `http://127.0.0.1:8000/operate/`;
-    const requestData = {graph: function_, range_min: 1, range_max: 5, no_data_points: 10}
+    const requestData = {graph: function_, range_min: parseFloat(range_min_), range_max: parseFloat(range_max_), no_data_points: parseFloat(no_data_points_)}
     console.log(requestData)
 
     try {
