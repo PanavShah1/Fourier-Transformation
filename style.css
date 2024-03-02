@@ -1,8 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body{
-    height: 100vh;
+    height: calc(100vh - 20px);
+    /* width: 100vw; */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(42, 42, 42);
+    /* background-color: aqua; */
+}
+
+#info{
+    width: 100%;
+    align-self: center;
+    color: rgb(217, 217, 217);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#info > * {
+    margin-bottom: 10px;
+}
+
+#info > h2{
+    font-size: 2rem;
+    color: white;
+    align-self: center;
+}
+
+#info > ul{
+    margin-left: 20px;
 }
 
 #calculator{
-    width: 100%;
-    height: 50%;
+    /* height: 50%; */
+    flex-grow: 1;
+    margin-bottom: 10px;
+    /* width: calc(100% - 20px); */
+    position: relative;
 }
+
+#bottom{
+    display: flex;
+    background-color: rgb(215, 215, 215);
+    height: 200px;
+}
+
+#left{
+    padding: 10px;
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Three columns */
+    grid-template-rows: 1fr 1fr 1fr; /* Two rows with auto height */
+    gap: 10px; /* Gap between grid items */
+}
+
+#left > p{
+    align-self: center;
+}
+
+input{
+    width: 90%;
+    max-width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0.5px solid black;
+}
+
+/* .input-cont{
+    position: relative;
+} */
+
+/* .inc-dec{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+} */
+
+#right{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+#right > p{
+    align-self: center;
+    font-size: 1.5rem;
+}
+
+textarea{
+    width: 95%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#pointer{
+    position: absolute;
+    z-index: 1;
+    left: 90px;
+    top: 66px;
+    color: gray;
+}
+
+#go-up{
+    position: absolute;
+    z-index: 1;
+    left: 5px;
+    top: 10px;
+}
+
+.go{
+    width: 100px;
+    height: 30px;
+    background-color: rgb(42, 42, 42);
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+

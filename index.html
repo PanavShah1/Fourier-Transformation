@@ -7,10 +7,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="calculator"></div>
-    <input type="text" name="range-min" id="range-min">
-    <input type="text" name="range-max" id="range-max">
-    <input type="text" name="no-data-points" id="no-data-points">
+    <div id="info">
+        <h2>Fourier Transformation</h2>
+        <p>In physics, engineering and mathematics, the Fourier transform (FT) is an integral transform that converts a function into a form that describes the frequencies present in the original function. The output of the transform is a complex-valued function of frequency. </p>
+        <p>This program selects discrete points on the graph of the function and approximates the corresponding Fourier transformation</p>
+        <p>How to use : </p>
+        <ul>
+            <li>Enter the range and precision</li>
+            <li>Enter the equation (use brackets for every function eg. sin(x), ln(x), sqrt(x))</li>
+            <li>Press "Go"</li>
+        </ul>
+    </div>
+
+    <div id="calculator">
+        <div id="pointer">Enter equation here</div>
+        <button class="go" onclick="go()" id="go-up">Go</button>
+    </div>
+    <div id="bottom">
+        <div id="left">
+            <p>Range min : </p>
+            <input type="text" name="range-min" id="range-min">
+            <p>Range max : </p>
+            <input type="text" name="range-max" id="range-max">
+            <p>No of data points : </p>
+            <input type="text" name="no-data-points" id="no-data-points">
+            <button class="go" onclick="go()">Go</button>
+        </div>
+        <div id="right">
+            <p>Fourier transformed equation</p>
+            <textarea name="fourier-function" id="fourier-function" disabled="true"></textarea>
+        </div>
+
+    </div>
+    
 
 
     <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
