@@ -1,2 +1,4 @@
 import numpy as np
-print(np.e)
+import math
+
+print(math.perm(4, 3))

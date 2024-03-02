@@ -1,5 +1,6 @@
 import numpy as np
 import json
+import math
 
 #uvicorn myapi:app --reload
 
@@ -21,9 +22,9 @@ app.add_middleware(
 
 #Edit these values
 #------------------
-range_min = 0
-range_max = 5
-no_data_points = 10
+# range_min = 1
+# range_max = 5
+# no_data_points = 10
 
 #------------------
 
@@ -49,7 +50,7 @@ def calculate(t, l, coeff, sin_coeff, cos_coeff):
 
 
 
-def return_graph(operation):
+def return_graph(operation : str, range_min : float, range_max : float, no_data_points : float):
     # if operation == 'y=x*x':
     #     operation = 'x*x'
     operation = translate(operation)
@@ -136,7 +137,8 @@ def return_graph(operation):
 
 @app.post('/operate/')
 def func(operation : dict):
-    return {"graph" : return_graph(operation['graph'])[0], "operation": return_graph(operation['graph'])[1]}
+    returns = return_graph(operation['graph'], operation['range_min'], operation['range_max'], operation['no_data_points'])
+    return {"graph" : returns[0], "operation" : returns[1]}
     # return {"graph" : 'x', "operation": return_graph(operation['graph'])[1]}
 
 
